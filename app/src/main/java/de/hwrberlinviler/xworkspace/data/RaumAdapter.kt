@@ -26,7 +26,7 @@ class RaumAdapter(val raumList: List<Raum>): RecyclerView.Adapter<RaumAdapter.Ra
         fun bind(raum: Raum) {
             txtRaumNummer.text = "Raum " + raum.Nummer
             txtRaumOrt.text = raum.Straße + " " + raum.HausNr + ", " + raum.PLZ + " " + raum.Ort
-
+            linearlayout_feature.removeAllViews()
             for (feature in raum.features) {
 
                 val layoutParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
