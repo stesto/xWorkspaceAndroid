@@ -47,10 +47,10 @@ class LoginActivity : AppCompatActivity() {
                 .setTitle(R.string.login_failed_title)
                 .setMessage(R.string.login_failed_text)
                 .show()
-
-            val btnLogin = findViewById<Button>(R.id.btnLogin);
-
-            btnLogin.isEnabled = true
         }
+
+        val btnLogin = findViewById<Button>(R.id.btnLogin);
+
+        btnLogin.isEnabled = true
     }
 }
