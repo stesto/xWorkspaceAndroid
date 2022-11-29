@@ -1,7 +1,9 @@
 package de.hwrberlinviler.xworkspace
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import de.hwrberlinviler.xworkspace.data.RaumAdapter
@@ -19,6 +21,12 @@ class MainActivity : AppCompatActivity() {
             if (roomsResponse.isSuccessful) {
                 showRooms(roomsResponse.body()!!)
             }
+        }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.rooms_recycler_view);
+
+        recyclerView.setOnClickListener {
+            startActivity(Intent(this, RoomDetails::class.java))
         }
     }
 
