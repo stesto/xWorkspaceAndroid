@@ -2,6 +2,7 @@ package de.hwrberlinviler.xworkspace
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.hwrberlinviler.xworkspace.data.RaumAdapter
 import de.hwrberlinviler.xworkspace.data.XWorkspaceAPI
 import de.hwrberlinviler.xworkspace.data.model.Raum
+import de.hwrberlinviler.xworkspace.data.model.StaticUser
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -17,8 +19,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         lifecycleScope.launch {
-            val roomsResponse = XWorkspaceAPI.client.getRooms()
+            val roomsResponse = XWorkspaceAPI.client.getReservierungen(StaticUser.User!!.ID);
             if (roomsResponse.isSuccessful) {
+                Log.d("Raum", roomsResponse.body().toString())
                 showRooms(roomsResponse.body()!!)
             }
         }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import de.hwrberlinviler.xworkspace.data.XWorkspaceAPI
+import de.hwrberlinviler.xworkspace.data.model.StaticUser
 import de.hwrberlinviler.xworkspace.data.model.User
 import kotlinx.coroutines.launch
 
@@ -40,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun checkLogin(userList: List<User>) {
         if (userList.count() == 1) {
+            StaticUser.User = userList.first();
             startActivity(Intent(this, MainActivity::class.java))
         }
         else {

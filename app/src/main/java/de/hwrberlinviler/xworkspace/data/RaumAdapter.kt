@@ -2,6 +2,8 @@ package de.hwrberlinviler.xworkspace.data
 
 import android.content.Context
 import android.content.Intent
+import android.os.Debug
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,16 +29,24 @@ class RaumAdapter(val raumList: List<Raum>): RecyclerView.Adapter<RaumAdapter.Ra
         private val layoutRaumEntry: ConstraintLayout = itemView.findViewById(R.id.layoutRaumEntry);
         private val txtRaumNummer: TextView = itemView.findViewById(R.id.txtRaumNummer)
         private val txtRaumOrt: TextView = itemView.findViewById(R.id.txtRaumOrt)
-        private val linearlayout_feature: LinearLayout = itemView.findViewById(R.id.linearlayout_feature)
+        private val txtRaumReservierungDatum: TextView = itemView.findViewById(R.id.txtRaumReservierungDatum);
+        private val txtRaumReservierungVon: TextView = itemView.findViewById(R.id.txtRaumReservierungVon);
+        private val txtRaumReservierungBis: TextView = itemView.findViewById(R.id.txtRaumReservierungBis);
+        private val linearlayout_feature: com.google.android.flexbox.FlexboxLayout = itemView.findViewById(R.id.flexlayout_feature)
 
         fun bind(raum: Raum) {
+
             txtRaumNummer.text = "Raum " + raum.Nummer
             txtRaumOrt.text = raum.Straße + " " + raum.HausNr + ", " + raum.PLZ + " " + raum.Ort
+
+            txtRaumReservierungDatum.text = raum.Datum;
+            txtRaumReservierungVon.text = raum.Von;
+            txtRaumReservierungBis.text = raum.Bis;
+
             linearlayout_feature.removeAllViews()
             for (feature in raum.features) {
 
                 val layoutParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                layoutParams.setMargins(0, 0, 15, 0)
 
                 val feature_dynamic = TextView(linearlayout_feature.context)
                 feature_dynamic.textSize = 12f

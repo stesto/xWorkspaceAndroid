@@ -1,38 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layoutRaumEntry"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="4dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp"
+    app:cardCornerRadius="6dp"
+    android:padding="8dp"
+     >
 
-    <TextView
-        android:id="@+id/txtRaumNummer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Raum"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:justifyContent="space_between">
 
-    <TextView
-        android:id="@+id/txtRaumOrt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Straße HausNr, PLZ Ort"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRaumNummer" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutRaumEntry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/linearlayout_feature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRaumOrt">
+            <TextView
+                android:id="@+id/txtRaumNummer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Raum"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/txtRaumOrt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Straße HausNr, PLZ Ort"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtRaumNummer" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flexlayout_feature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:flexWrap="wrap"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtRaumOrt">
+
+            </com.google.android.flexbox.FlexboxLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutRaumEntryReservationData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtRaumReservierungDatum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:maxLines="1"/>
+
+            <TextView
+                android:id="@+id/txtRaumReservierungVon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtRaumReservierungDatum" />
+
+            <TextView
+                android:id="@+id/txtRaumReservierungBis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtRaumReservierungVon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+
+</androidx.cardview.widget.CardView>
