@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
@@ -23,9 +24,9 @@ import de.hwrberlinviler.xworkspace.data.model.Feature
 import de.hwrberlinviler.xworkspace.data.model.Raum
 
 
-class RaumAdapter(val raumList: List<Raum>): RecyclerView.Adapter<RaumAdapter.RaumViewHolder>() {
+class RaumAdapter(val raumList: List<Raum>, val clickFunction: (raum: Raum) -> Unit): RecyclerView.Adapter<RaumAdapter.RaumViewHolder>() {
 
-    class RaumViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class RaumViewHolder(itemView: View, val clickFunction: (raum: Raum) -> Unit): RecyclerView.ViewHolder(itemView) {
         private val layoutRaumEntry: ConstraintLayout = itemView.findViewById(R.id.layoutRaumEntry);
         private val txtRaumNummer: TextView = itemView.findViewById(R.id.txtRaumNummer)
         private val txtRaumOrt: TextView = itemView.findViewById(R.id.txtRaumOrt)
@@ -59,14 +60,14 @@ class RaumAdapter(val raumList: List<Raum>): RecyclerView.Adapter<RaumAdapter.Ra
             }
 
             layoutRaumEntry.setOnClickListener {
-                startActivity(linearlayout_feature.context, Intent(linearlayout_feature.context, RoomDetails::class.java), null);
+                clickFunction(raum)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RaumViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.room_entry, parent, false)
-        return RaumViewHolder(view);
+        return RaumViewHolder(view, clickFunction);
     }
 
     override fun onBindViewHolder(holder: RaumViewHolder, position: Int) {
@@ -76,5 +77,4 @@ class RaumAdapter(val raumList: List<Raum>): RecyclerView.Adapter<RaumAdapter.Ra
     override fun getItemCount(): Int {
         return raumList.size
     }
-
 }

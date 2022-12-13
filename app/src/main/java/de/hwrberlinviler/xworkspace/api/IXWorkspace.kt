@@ -10,6 +10,12 @@ interface IXWorkspace {
     @GET("get_raum.php")
     suspend fun getRooms(): Response<List<Raum>>
 
+    @GET("get_raum.php")
+    suspend fun getRooms(@Query("datum") datum: String, @Query("von") von: String, @Query("bis") bis: String): Response<List<Raum>>
+
+    @GET("set_reservierung.php")
+    suspend fun addReservation(@Query("benutzerId") userId: Int, @Query("raumId") raumId: Int, @Query("datum") datum: String, @Query("von") von: String, @Query("bis") bis: String, @Query("cmd") cmd: String = "new"): Response<String>
+
     @GET("get_reservierung.php")
     suspend fun getReservierungen(@Query("benutzerId") userId: Int): Response<List<Raum>>
 
