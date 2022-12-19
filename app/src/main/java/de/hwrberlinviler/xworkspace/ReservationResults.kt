@@ -48,7 +48,7 @@ class ReservationResults : AppCompatActivity() {
         }
 
         val recyclerView: RecyclerView = findViewById(R.id.rooms_recycler_view)
-        recyclerView.adapter = RaumAdapter(rooms, this::onRoomClicked)
+        recyclerView.adapter = RaumAdapter(rooms, this::onRoomClicked, this::onRoomLongClicked)
     }
 
     private fun onRoomClicked(raum: Raum) {
@@ -68,5 +68,9 @@ class ReservationResults : AppCompatActivity() {
                 dialog.dismiss()
             }
             .show()
+    }
+
+    private fun onRoomLongClicked(raum: Raum) {
+
     }
 }

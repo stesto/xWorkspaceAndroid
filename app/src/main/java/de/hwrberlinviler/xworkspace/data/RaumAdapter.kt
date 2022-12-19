@@ -24,9 +24,9 @@ import de.hwrberlinviler.xworkspace.data.model.Feature
 import de.hwrberlinviler.xworkspace.data.model.Raum
 
 
-class RaumAdapter(val raumList: List<Raum>, val clickFunction: (raum: Raum) -> Unit): RecyclerView.Adapter<RaumAdapter.RaumViewHolder>() {
+class RaumAdapter(val raumList: List<Raum>, val clickFunction: (raum: Raum) -> Unit, val longClickFunction: (raum: Raum) -> Unit): RecyclerView.Adapter<RaumAdapter.RaumViewHolder>() {
 
-    class RaumViewHolder(itemView: View, val clickFunction: (raum: Raum) -> Unit): RecyclerView.ViewHolder(itemView) {
+    class RaumViewHolder(itemView: View, val clickFunction: (raum: Raum) -> Unit, val longClickFunction: (raum: Raum) -> Unit): RecyclerView.ViewHolder(itemView) {
         private val layoutRaumEntry: ConstraintLayout = itemView.findViewById(R.id.layoutRaumEntry);
         private val txtRaumNummer: TextView = itemView.findViewById(R.id.txtRaumNummer)
         private val txtRaumOrt: TextView = itemView.findViewById(R.id.txtRaumOrt)
@@ -62,12 +62,17 @@ class RaumAdapter(val raumList: List<Raum>, val clickFunction: (raum: Raum) -> U
             layoutRaumEntry.setOnClickListener {
                 clickFunction(raum)
             }
+
+            layoutRaumEntry.setOnLongClickListener {
+                longClickFunction(raum)
+                true
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RaumViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.room_entry, parent, false)
-        return RaumViewHolder(view, clickFunction);
+        return RaumViewHolder(view, clickFunction, longClickFunction);
     }
 
     override fun onBindViewHolder(holder: RaumViewHolder, position: Int) {

@@ -12,6 +12,7 @@ data class Raum(
     val features: List<Feature>,
 
     //Resrvierungsstuff
+    val ReservierungID: Int,
     val Datum: String,
     val Von: String,
     val Bis: String,
