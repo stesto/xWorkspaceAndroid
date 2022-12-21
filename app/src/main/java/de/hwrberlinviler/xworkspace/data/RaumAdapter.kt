@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.marginRight
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.flexbox.FlexboxLayout
 import de.hwrberlinviler.xworkspace.MainActivity
 import de.hwrberlinviler.xworkspace.R
 import de.hwrberlinviler.xworkspace.RoomDetails
@@ -27,13 +28,13 @@ import de.hwrberlinviler.xworkspace.data.model.Raum
 class RaumAdapter(val raumList: List<Raum>, val clickFunction: (raum: Raum) -> Unit, val longClickFunction: (raum: Raum) -> Unit): RecyclerView.Adapter<RaumAdapter.RaumViewHolder>() {
 
     class RaumViewHolder(itemView: View, val clickFunction: (raum: Raum) -> Unit, val longClickFunction: (raum: Raum) -> Unit): RecyclerView.ViewHolder(itemView) {
-        private val layoutRaumEntry: ConstraintLayout = itemView.findViewById(R.id.layoutRaumEntry);
+        private val layoutRaumEntry: FlexboxLayout = itemView.findViewById(R.id.layoutRaumEntry);
         private val txtRaumNummer: TextView = itemView.findViewById(R.id.txtRaumNummer)
         private val txtRaumOrt: TextView = itemView.findViewById(R.id.txtRaumOrt)
         private val txtRaumReservierungDatum: TextView = itemView.findViewById(R.id.txtRaumReservierungDatum);
         private val txtRaumReservierungVon: TextView = itemView.findViewById(R.id.txtRaumReservierungVon);
         private val txtRaumReservierungBis: TextView = itemView.findViewById(R.id.txtRaumReservierungBis);
-        private val linearlayout_feature: com.google.android.flexbox.FlexboxLayout = itemView.findViewById(R.id.flexlayout_feature)
+        private val linearlayout_feature: FlexboxLayout = itemView.findViewById(R.id.flexlayout_feature)
 
         fun bind(raum: Raum) {
 
